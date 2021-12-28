@@ -48,7 +48,7 @@ public class AuthorSelect {
 		    while(rs.next()) {
 		    	int authorId /*내가지정한변수명*/ = rs.getInt("아이디"); //getInt(숫자컬럼명)
 		    	String authorName = rs.getString("author_name"); //getString(문자컬럼명)
-		    	String authorDesc = rs.getString("author_desc"); //while 입력순서대로 출력됨
+		    	String authorDesc = rs.getString(3); //while 입력순서대로 출력됨 3번째컬럼꺼내옴 desc
 		    	
 		    	System.out.println(authorId + ", " + authorName + ", " + authorDesc);
 		    }
