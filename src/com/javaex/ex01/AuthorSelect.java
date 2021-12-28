@@ -26,7 +26,7 @@ public class AuthorSelect {
 
 		    // 3. SQL문 준비 / 바인딩 / 실행
 		    String query = "";
-		    query += " select author_id id, ";//이름변경할때 뒤에 글자추가
+		    query += " select author_id 아이디, ";//이름변경할때 뒤에 글자추가
 		    query += "  author_name, ";
 		    query += "  author_desc "; //콤마 안찍는거 빼먹지말기
 		    query += " from author ";
@@ -46,7 +46,7 @@ public class AuthorSelect {
 		    // 4.결과처리
 		    //while--> row의 갯수만큼 반복
 		    while(rs.next()) {
-		    	int authorId /*내가지정한변수명*/ = rs.getInt("id"); //getInt(숫자컬럼명)
+		    	int authorId /*내가지정한변수명*/ = rs.getInt("아이디"); //getInt(숫자컬럼명)
 		    	String authorName = rs.getString("author_name"); //getString(문자컬럼명)
 		    	String authorDesc = rs.getString("author_desc"); //while 입력순서대로 출력됨
 		    	
