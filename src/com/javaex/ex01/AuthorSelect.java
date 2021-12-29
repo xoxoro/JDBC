@@ -5,12 +5,18 @@ import java.sql.DriverManager;
 import java.sql.PreparedStatement;
 import java.sql.ResultSet;
 import java.sql.SQLException;
+import java.util.ArrayList;
+import java.util.List;
 
 public class AuthorSelect {
 
 	public static void main(String[] args) {
 		
+		List<AuthorVo> authorList = new ArrayList<AuthorVo>(); //제네릭		
+		
 		// 작가 데이터 가져오기
+		
+		
 		// 0. import java.sql.*;
 		Connection conn = null;
 		PreparedStatement pstmt = null;
@@ -50,8 +56,29 @@ public class AuthorSelect {
 		    	String authorName = rs.getString("author_name"); //getString(문자컬럼명)
 		    	String authorDesc = rs.getString(3); //while 입력순서대로 출력됨 3번째컬럼꺼내옴 desc
 		    	
-		    	System.out.println(authorId + ", " + authorName + ", " + authorDesc);
+		    	AuthorVo vo= new AuthorVo(authorId, authorName, authorDesc);
+		    	
+		    	//정렬시키기위해 주소값 넣기
+		    	authorList.add(vo);
+		    	
+		    	
+		    	//System.out.println(authorId + ", " + authorName + ", " + authorDesc); -->정렬없을때 입력표기
+	
 		    }
+		    
+		    //출력
+		    //0부터니까 사이즈가 n개면 i<n임
+		    for(int i=0; i<authorList.size(); i++) {
+		    	AuthorVo authorVo = authorList.get(i);
+		    	System.out.println(authorVo.getAuthorId() + ", " + authorVo.getAuthorName() + ", " + authorVo.getAuthorDesc());
+		    }
+		    
+		    //첫번째 작가 이름만 다시 출력
+		    AuthorVo authorVo = authorList.get(0);
+		    System.out.println(authorVo.getAuthorName());
+		    
+		    
+		    
 
 		} catch (ClassNotFoundException e) {
 		    System.out.println("error: 드라이버 로딩 실패 - " + e);
