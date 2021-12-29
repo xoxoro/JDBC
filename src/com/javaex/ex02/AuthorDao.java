@@ -8,8 +8,6 @@ import java.sql.SQLException;
 import java.util.ArrayList;
 import java.util.List;
 
-import com.javaex.ex01.AuthorVo;
-
 public class AuthorDao {
 
 	// 필드
@@ -209,7 +207,7 @@ public class AuthorDao {
 	}
 
 	// 작가 리스트 가져오기
-	public void authorSelect() {
+	public List<AuthorVo> authorSelect() {
 		List<AuthorVo> authorList = new ArrayList<AuthorVo>(); //제네릭
 		// 0. import java.sql.*;
 		Connection conn = null;
@@ -276,7 +274,7 @@ public class AuthorDao {
 		    }
 
 		}
-
+		return authorList;
 	}
 
 }
